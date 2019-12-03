@@ -4,19 +4,23 @@ import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.*;
 
 public class JobTest {
 
     Job empty_test_job_one;
     Job empty_test_job_two;
     Job new_job_object;
+    Job test_equality_job_object_one;
+    Job test_equality_job_object_two;
+
     @Before
     public void createJobObject() {
         empty_test_job_one = new Job();
         empty_test_job_two = new Job();
         new_job_object = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        test_equality_job_object_one = new Job("A", new Employer("B"), new Location("C"), new PositionType("D"), new CoreCompetency("E"));
+        test_equality_job_object_two = new Job("A", new Employer("B"), new Location("C"), new PositionType("D"), new CoreCompetency("E"));
     }
 
     @Test
@@ -42,6 +46,11 @@ public class JobTest {
 
         assertTrue(new_job_object.getCoreCompetency() instanceof CoreCompetency);
         assertEquals("Persistence", new_job_object.getCoreCompetency().getValue());
+    }
+
+    @Test
+    public void testJobsForEquality() {
+        assertFalse(test_equality_job_object_one.equals(test_equality_job_object_two));
     }
 
 }
