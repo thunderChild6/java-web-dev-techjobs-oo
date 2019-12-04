@@ -30,6 +30,23 @@ public class Job {
         this.coreCompetency = aCoreCompetency;
     }
 
+    @Override
+    public String toString() {
+        if (name.isEmpty()) {name = "Data not available";}
+        if (employer.getValue().isEmpty()) {employer.setValue("Data not available");}
+        if (location.getValue().isEmpty()) {location.setValue("Data not available");}
+        if (positionType.getValue().isEmpty()) {positionType.setValue("Data not available");}
+        if (coreCompetency.getValue().isEmpty()) {coreCompetency.setValue("Data not available");}
+        return "\n" +
+            "ID:  " + id +
+            "\nName:  " + name +
+            "\nEmployer:  " + employer +
+            "\nLocation:  " + location +
+            "\nPosition Type:  " + positionType +
+            "\nCore Competency:  " + coreCompetency +
+            '\n';
+    }
+
     // equals and hashcode methods:
 
     @Override
